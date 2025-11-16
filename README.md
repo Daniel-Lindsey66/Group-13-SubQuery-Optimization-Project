@@ -31,6 +31,36 @@ Current unnesting algorithms only address specific permutations. While the curre
 This project is based on enhancing the results of Thomas Neumann's 'Improving Unnesting of Complex Queries' (2024) and it's precursor 'A Formalization of Top-Down Unnesting' (2024).
 
 
+## Datasets
+The datasets used for our evaluations were obtained from Data.gov, an official United States repository allowing for public access to data used by the federal government. All information contained within the datasets are verified for accuracy and routinely maintained by the federal government under the OPEN Government Data Act. For more detailed information please see the Data.gov [user guide.](https://data.gov/user-guide/)
+
+1. Crime Data
+> The first dataset we used was Los Angeles, California crime data dating back from 2020 to current day. With roughly over a million datapoints and 28 columns worth of information for each point; this dataset offered a good starting point for evaluating query-runtime.
+>
+>  [Source](https://catalog.data.gov/dataset/crime-data-from-2020-to-present)  
+>  [CSV]()  
+>  [PostgreSQL Schema]()  
+>  [Evaluation Queries]()  
+>
+
+2. Climate Data
+> The second dataset we used featured national weather data collected across roughly 5,500 weather observation stations. This data is monitored and maintained by the National Centers for Environmental Information (NCEI). Contains over a million datasets from 6-month sets spanning 2020-2025. Datasets were pulled using the National Oceanic and Atmospheric Administration's (NOAA) Climate Data Online Search for Daily Summaries.
+>
+>  [Source](https://catalog.data.gov/dataset/u-s-hourly-precipitation-data2)  
+>  [CSV]()  
+>  [PostgreSQL Schema]()  
+>  [Evaluation Queries]()  
+>
+
+3. Consumer Complaints
+   
+> Our third and final dataset contained Consumer Complaint data going back to October 31st of 2014. This dataset is multiple gigabytes worth of datapoints and rounded out our data selection.
+>
+>  [Source](https://catalog.data.gov/dataset/cgb-consumer-complaints-data)  
+>  [CSV]()  
+>  [PostgreSQL Schema]()  
+>  [Evaluation Queries]()  
+>
 
 ## Results
 
