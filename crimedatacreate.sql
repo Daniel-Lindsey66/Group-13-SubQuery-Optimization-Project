@@ -30,3 +30,7 @@ CREATE TABLE crimedata (
     lat                DOUBLE PRECISION,
     lon                DOUBLE PRECISION
 );
+
+-- **NOTE** Please change absolute file path to reflect your username
+-- load crime data from CSV file
+copy crimedata FROM 'C:\Users\USERNAME_GOES_HERE\Downloads\DataSets\CrimeData\Crime_Data_from_2020_to_Present.csv' DELIMITER ',' CSV HEADER; 
