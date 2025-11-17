@@ -1,4 +1,4 @@
-# Database Theory (CS5151) - Group 13: PostgreSQL Decorrelation Project
+# Database Theory (CS5151) - Group 13: PostgreSQL Sub-Query Optimization Project
 
 ## Project Type: Fix and Win
 
