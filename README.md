@@ -51,10 +51,12 @@ Below is a brief overview of the datasets we used during testing, their sources,
 >  [Evaluation Queries]()  
 
 
-Rejected Dataset: Climate Data
+3. Climate Data (Rejected)
 
-Originally we wanted to also work with national weather data that was collected across roughly 5,500 weather observation stations. The data was monitored and maintained by the National Centers for Environmental Information (NCEI). Containing over a million datasets from 6-month sets spanning 2020-2025. Multiple sets were pulled using the National Oceanic and Atmospheric Administration's (NOAA) Climate Data Online Search for Daily Summaries. The main issue we ran into with this dataset was that it hadn't been normalized and thus contained too many inconsitencies to continue using.
-
+> Originally we wanted to also work with national weather data that was collected across roughly 5,500 weather observation stations. The data was monitored and maintained by the National Centers for Environmental Information (NCEI); containing over a million datasets from 6-month sets spanning 2020-2025. Multiple sets were pulled using the National Oceanic and Atmospheric Administration's (NOAA) Climate Data Online Search for Daily Summaries.
+> 
+> The main issue we ran into with this dataset was that it hadn't been normalized and contained too many inconsitencies to continue using. It also made the schema overly complex with having to import multiple datasets into a single table - which made the removal and overall net positive for our project.
+>
 > [Source](https://catalog.data.gov/dataset/u-s-hourly-precipitation-data2)  
 
 ## Results
