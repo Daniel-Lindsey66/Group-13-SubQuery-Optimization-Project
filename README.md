@@ -55,7 +55,7 @@ Current unnesting algorithms only address specific permutations. While the curre
 
 ## Basis
 <div align='justify'>
-This project is based on enhancing the results of Thomas Neumann's 'Improving Unnesting of Complex Queries' (2024) and it's precursor 'A Formalization of Top-Down Unnesting' (2014).
+This project is based on enhancing the results of Thomas Neumann's 'Improving Unnesting of Complex Queries' (2024) and it's precursor 'A Formalization of Top-Down Unnesting' (2024).
 </div>
 
 ## Datasets
