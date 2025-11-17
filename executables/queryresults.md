@@ -1,19 +1,19 @@
-# Query Analysis
+## Query Analysis
 
-# Crime Dataset
+## Crime Dataset
 
-## Query 1
+### Query 1
 
-### Correlated
+#### Correlated
 
-## Decorrelated
+#### Decorrelated
 
-## Query 2
+### Query 2
 
-## Query 3
+### Query 3
 
-## Query 4
+### Query 4
 
-## Query 5
+### Query 5
 
-# Complaint Dataset
+## Complaint Dataset
