@@ -69,14 +69,14 @@ Below is a brief overview of the datasets we used during testing, their sources,
 > The first dataset we used was Los Angeles, California crime data dating back from 2020 to current day. With roughly over a million datapoints and 28 columns worth of information for each point; this dataset offered a good starting point for evaluating query-runtime.
 > 
 >  [Source](https://catalog.data.gov/dataset/crime-data-from-2020-to-present)  
->  [Evaluation Queries]()  
+>  [Evaluation Queries](executables/queries/crimedata)  
 
 2. Consumer Complaints
    
 > Our second dataset we used contained Consumer Complaint data going back to October 31st of 2014. This dataset has over 3 million datapoints and served as an upper bound for our testing.
 >
 >  [Source](https://catalog.data.gov/dataset/cgb-consumer-complaints-data)  
->  [Evaluation Queries]()  
+>  [Evaluation Queries](executables/queries/crimedata)  
 
 
 3. Climate Data (Rejected)
