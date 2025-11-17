@@ -58,7 +58,7 @@ CREATE TABLE complaint_data (
 -- **NOTE** Please set the 'UserName' variable to reflect your username
 DO $$
 DECLARE
-	UserName CONSTANT TEXT := 'Danie';
+	UserName CONSTANT TEXT := 'YOUR_USERNAME_GOES_HERE';
 
 	crime_file_path TEXT;
 	complaint_file_path TEXT;
