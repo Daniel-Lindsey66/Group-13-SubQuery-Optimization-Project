@@ -34,33 +34,30 @@ This project is based on enhancing the results of Thomas Neumann's 'Improving Un
 ## Datasets
 The datasets used for our evaluations were obtained from Data.gov, an official United States repository allowing for public access to data used by the federal government. All information contained within the datasets are verified for accuracy and routinely maintained by the federal government under the OPEN Government Data Act. For more detailed information please see the Data.gov [user guide.](https://data.gov/user-guide/)
 
+Below is a brief overview of the datasets we used during testing, their sources, and our rationale for their inclusion. To view the raw data please download the compressed CSV files found [here](/DataSets.7z). If you would like to test out our evaluation quieries yourself, please download the [SQL Schema](/table_schema_datasets.sql) and run the queries below. Please note that you will need to modify the 'UserName' variable in the SQL Schema to match your PC Username so that it will be able to properly evaluate the file path. Instructions are also provided if you run into a permissions error.
+
 1. Crime Data
 > The first dataset we used was Los Angeles, California crime data dating back from 2020 to current day. With roughly over a million datapoints and 28 columns worth of information for each point; this dataset offered a good starting point for evaluating query-runtime.
 >
 >  [Source](https://catalog.data.gov/dataset/crime-data-from-2020-to-present)  
->  [CSV]()  
->  [PostgreSQL Schema]()  
 >  [Evaluation Queries]()  
 >
 
-2. Climate Data
-> The second dataset we used featured national weather data collected across roughly 5,500 weather observation stations. This data is monitored and maintained by the National Centers for Environmental Information (NCEI). Contains over a million datasets from 6-month sets spanning 2020-2025. Datasets were pulled using the National Oceanic and Atmospheric Administration's (NOAA) Climate Data Online Search for Daily Summaries.
->
->  [Source](https://catalog.data.gov/dataset/u-s-hourly-precipitation-data2)  
->  [CSV]()  
->  [PostgreSQL Schema]()  
->  [Evaluation Queries]()  
->
-
-3. Consumer Complaints
+2. Consumer Complaints
    
-> Our third and final dataset contained Consumer Complaint data going back to October 31st of 2014. This dataset is multiple gigabytes worth of datapoints and rounded out our data selection.
+> Our second dataset we used contained Consumer Complaint data going back to October 31st of 2014. This dataset has over 3 million datapoints and served as an upper bound for our testing.
 >
 >  [Source](https://catalog.data.gov/dataset/cgb-consumer-complaints-data)  
->  [CSV]()  
->  [PostgreSQL Schema]()  
 >  [Evaluation Queries]()  
+
+
+3. Climate Data (Rejected)
+
+> Originally we wanted to also work with national weather data that was collected across roughly 5,500 weather observation stations. The data was monitored and maintained by the National Centers for Environmental Information (NCEI); containing over a million datasets from 6-month sets spanning 2020-2025. Multiple sets were pulled using the National Oceanic and Atmospheric Administration's (NOAA) Climate Data Online Search for Daily Summaries.
+> 
+> The main issue we ran into with this dataset was that it hadn't been normalized and contained too many inconsitencies to continue using. It also made the schema overly complex with having to import multiple datasets into a single table - which made the removal and overall net positive for our project.
 >
+> [Source](https://catalog.data.gov/dataset/u-s-hourly-precipitation-data2)  
 
 ## Results
 
