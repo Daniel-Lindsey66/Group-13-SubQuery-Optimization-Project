@@ -10,6 +10,18 @@ Sub-queries can come in multiple forms - nested and nested with correlation:
 
  - A **nested query** is simply any query that is placed inside another, often to divide the main query into multiple steps such as for filtering or aggregation operations. The inner query(ies) will always run first with the outer most query running last. Each execution of an  inner query will be independent of that of the outer query.
    
+       > SELECT *
+       > FROM doctors
+       > WHERE age > (
+       >	  SELECT AVG(age)
+       >   FROM doctors
+       > );
+
+      Result: (3, Elizabeth, 32), (5, Ross, 57)
+   
+
+- A **nested query with correlation** is a sub-query that references the outer query during execution. Since the sub-query references columns from the outer query this can make correlated queries less efficient than non-correlated sub-queries as the inner query must be re-run for each row
+  
        > SELECT doctor_id, doctor_name, patient_count    
        > FROM doctors  
        > WHERE patient_count > (    
@@ -18,26 +30,63 @@ Sub-queries can come in multiple forms - nested and nested with correlation:
        >   WHERE specialization = doctors.specialization  
        > );  
 
-      Result: (5, Ross, 57)
+     Result: (3, Elizabeth, 32), (5, Ross, 57)
+
+ - It is also possible for a sub-query to have both types of nesting as well as multiple levels of nesting, both of which can heavily impact execution times.
    
+       > SELECT doctor_id, doctor_name, patient_count  
+       > FROM doctors d1
+       > WHERE patient_count > (  
+       >	  SELECT AVG(patient_count)  
+       >   FROM doctors d2
+       >   WHERE d1.specialization = d2.specialization 
+       >   AND d2.age IN (
+       >     SELECT age
+       >     FROM doctors d3
+       >     WHERE age >= 30 and age <= 50
+       >   )
+       );  
 
-- A **nested query with correlation** is a sub-query that references the outer query during execution. Since the sub-query references columns from the outer query this can make correlated queries less efficient than non-correlated sub-queries.
-
-      > SELECT doctor_id, doctor_name, patient_count  
-      > FROM doctors d1  
-      > WHERE patient_count = (  
-      >    SELECT MAX(patient_count)  
-      >    FROM doctors d2  
-      >    WHERE d1.specialization = d2.specialization  
-      > );
-
-     Result: (1, David, 20), (2, Shane, 10), (5, Ross, 57)
+     Result: (5, Ross, 57)
 <br/><br/>
 <div align='justify'>
 It is then possible to unnest and decorrelate these queries for improved execution times. This only holds if the sub-query is within a WHERE or HAVING clause. Any sub-query within a FROM clause is instead clasified as a view and falls outside the scope of this project.  
+
  
 - An **unnested query** ...
-- An **decorrelated query** ...
+
+      > SELECT *
+      > FROM doctors d
+      > JOIN (
+      >   SELECT AVG(age) as avg_age
+      >   FROM doctors
+      > ) agg
+      > ON d.age > agg.avg_age;
+  
+- A **decorrelated query** ...
+
+      > SELECT doctor_id, doctor_name, patient_count  
+      > FROM doctors d
+      > JOIN (
+      >   SELECT specialization, AVG(patient_count) AS avg_patient_count
+      >   FROM doctors
+      >   GROUP BY specialization
+      > ) AS specialization s
+      > ON d.specialization = s.specialization
+      > WHERE d.patient_count > s.avg_patient_count;
+
+- A sub-query that contains both types of nesting and multiple levels can be unnested and decorrelated through a series of JOIN, GROUP BY, and WHERE clauses.
+
+      > SELECT doctor_id, doctor_name, patient_count
+      > FROM doctors d
+      > JOIN (
+      >   SELECT specialization, AVG(patient_count) as avg_patient_count
+      >   FROM doctors 
+      >   WHERE age >= 30 and age <= 50
+      >   GROUP BY specialization
+      > ) agg
+      > ON d.specialization = agg.specialization
+      > WHERE d.patient_count > avg_patient_count; 
 
 <br/><br/>
 This project covers the topic of SQL sub-query unnesting and decorrelation, providing real-world based evidence on the efficiency improvements provided on average when a query has been fully unnested and/or decorrelated.  
