@@ -1,3 +1,5 @@
+# Query Analysis
+
 # Crime Dataset
 
 ## Query 1
