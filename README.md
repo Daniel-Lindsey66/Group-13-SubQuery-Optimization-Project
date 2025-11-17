@@ -8,11 +8,38 @@
 
 PostgreSQL features a cost-based query optimizer that transforms SQL queries into more efficient 
 permutations to minimize execution time. This optimizer utilizes a variety of efficiency improving techniques 
-such as index utilization, query flattening, and query unnesting/decorrelation among others. 
-This project covers the topic of SQL query unnesting, and provides real-world based
-evidence on the efficiency improvements unnesting provides on average in comparison to their nested 
-counterparts.  We also hope to identify edge cases which are impossible to unnest using current methods 
-and attempt to provide a methodology on how to unnest such queries. 
+such as index utilization, query flattening, and subquery unnesting/decorrelation among others. 
+This project covers the topic of SQL subquery unnesting and decorrelation, providing real-world based
+evidence on the efficiency improvements provided on average when a query has been fully unnested or decorrelated.
+
+Subqueries can come in multiple forms - nested and nested with correlation:
+
+ - A **nested query** is simply any query that is placed inside another, often to divide the main query into multiple steps such as for filtering or aggregation operations. The inner query(ies) will always run first with the outer most query running last. Each execution of an  inner query will be independent of that of the outer query.
+   
+      > SELECT doctor_id, doctor_name, patient_count    
+      > FROM doctors  
+      > WHERE patient_count > (    
+      >   SELECT AVG(patient_count)    
+      >   FROM doctors  
+      >   WHERE specialization = doctors.specialization  
+      > );  
+
+      Result: (5, Ross, 57)
+   
+
+- A **nested query with correlation** is a subquery that depends on the outer query for execution. Since the subquery references columns from the outer query this can make correlated queries less efficient than non-correlated subqueries.
+
+      > SELECT doctor_id, doctor_name, patient_count  
+      > FROM doctors d1  
+      > WHERE patient_count = (  
+      >    SELECT MAX(patient_count)  
+      >    FROM doctors d2  
+      >    WHERE d1.specialization = d2.specialization  
+      > );
+
+     Result: (1, David, 20), (2, Shane, 10), (5, Ross, 57)
+
+
 
 We have also identified 3(?) edge cases which are unable to be unnested consistently using current methodology and provided examples and reasoning on why they can't be unnested.
 
