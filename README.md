@@ -1,6 +1,14 @@
-# Database Theory (CS5151) - Group 13: PostgreSQL Sub-Query Optimization Project
+# Database Theory (CS5151) - Group 13: <br/>PostgreSQL Sub-Query Optimization Project
 
 ## Project Type: Fix and Win
+
+## Problem(s) Addressed
+<div align='justify'>
+ 
+- Little real-world evidence is available detailing the efficiency improvements that unnesting/decorrelation provides - specifically in terms of specific SQL operators and levels of nesting.
+
+- Current unnesting algorithms only address specific permutations. While the current rules are mostly comprehensive, there still exist edge cases that are not supported.
+</div>
 
 ## Overview
 <div align='justify'>
@@ -32,7 +40,7 @@ Sub-queries can come in multiple forms - nested and nested with correlation:
 
      Result: (3, Elizabeth, 32), (5, Ross, 57)
 
- - It is also possible for a sub-query to have both types of nesting as well as multiple levels of nesting, both of which can heavily impact execution times.
+ - It is also possible for a sub-query to have both types of nesting as well as multiple nesting levels, both of which can heavily impact execution times.
    
        > SELECT doctor_id, doctor_name, patient_count  
        > FROM doctors d1
@@ -50,10 +58,10 @@ Sub-queries can come in multiple forms - nested and nested with correlation:
      Result: (5, Ross, 57)
 <br/><br/>
 <div align='justify'>
-It is then possible to unnest and decorrelate these queries for improved execution times. This only holds if the sub-query is within a WHERE or HAVING clause. Any sub-query within a FROM clause is instead clasified as a view and falls outside the scope of this project.  
+It is then possible to unnest and decorrelate these queries for improved execution times.  This can be done through a series of JOIN, GROUP BY, and WHERE clauses. Instead of replacing the subquery using a JOIN, CTEs will also work.  
 
  
-- An **unnested query** ...
+- **Unnested query from above:**
 
       > SELECT *
       > FROM doctors d
@@ -63,7 +71,7 @@ It is then possible to unnest and decorrelate these queries for improved executi
       > ) agg
       > ON d.age > agg.avg_age;
   
-- A **decorrelated query** ...
+- **Decorrelated query from above:**
 
       > SELECT doctor_id, doctor_name, patient_count  
       > FROM doctors d
@@ -75,7 +83,7 @@ It is then possible to unnest and decorrelate these queries for improved executi
       > ON d.specialization = s.specialization
       > WHERE d.patient_count > s.avg_patient_count;
 
-- A sub-query that contains both types of nesting and multiple levels can be unnested and decorrelated through a series of JOIN, GROUP BY, and WHERE clauses.
+- **Unnested/Decorrelated query from above:**
 
       > SELECT doctor_id, doctor_name, patient_count
       > FROM doctors d
@@ -88,18 +96,7 @@ It is then possible to unnest and decorrelate these queries for improved executi
       > ON d.specialization = agg.specialization
       > WHERE d.patient_count > avg_patient_count; 
 
-<br/><br/>
-This project covers the topic of SQL sub-query unnesting and decorrelation, providing real-world based evidence on the efficiency improvements provided on average when a query has been fully unnested and/or decorrelated.  
-We have also identified 3(?) edge cases which are unable to be unnested consistently using current methodology and provided examples and reasoning on why they can't be unnested.
-</div>
-
-
-## Problem(s) Addressed
-
-Little real-world evidence is available detailing the efficiency improvements that unnesting/decorrelation provides - specifically in terms of specific SQL operators and levels of nesting.
-
-Current unnesting algorithms only address specific permutations. While the current rules are mostly comprehensive, there still exist edge cases that are not supported.
-
+**This project covers the topic of SQL sub-query unnesting and decorrelation in the scope of PostgreSQL, providing real-world based evidence on the efficiency improvements provided on average when a query has been fully unnested and/or decorrelated. We also explore a variety of standardard and advanced SQL operations; examining their relationship with sub-queries and whether that impacts their ability to be unnested or decorrelated.**
 
 
 ## Basis
@@ -113,7 +110,7 @@ The datasets used for our evaluations were obtained from Data.gov, an official U
 <br/><br/>
 Below is a brief overview of the datasets we used during testing, their sources, and our rationale for their inclusion. To view the raw data please download the compressed CSV files found <a href="/executables/DataSets.7z">here</a> If you would like to test out our evaluation quieries yourself, please download the <a href="/executables/table_schema_datasets.sql">SQL Schema</a> and run the queries below. Please note that you will need to modify the 'UserName' variable in the SQL Schema to match your PC Username so that it will be able to properly evaluate the file path. Instructions are also provided if you run into a permissions error.  
 <br/><br/>
-1. Crime Data  
+1. Crime Data
  
 > The first dataset we used was Los Angeles, California crime data dating back from 2020 to current day. With roughly over a million datapoints and 28 columns worth of information for each point; this dataset offered a good starting point for evaluating query-runtime.
 > 
@@ -139,8 +136,10 @@ Below is a brief overview of the datasets we used during testing, their sources,
 
 ## Results
 <div align='justify'>
+ 
 **General summary of results go here along with graphs and list of edge cases**
 **Link to more in-depth results page**
+
 </div>
 
 
@@ -148,13 +147,13 @@ Below is a brief overview of the datasets we used during testing, their sources,
 
 | Member Name | Role | Email Address |
 |:-----------:|:----:|:-------------:|
-| Daniel Lindsey | Team Leader | lindsede@mail.uc.edu |
-| Chase Keller | Holder | kellec8@mail.uc.edu |
-| Long Nguyen | Holder | nguye2l6@mail.uc.edu |
+| Daniel Lindsey | Team Leader, Repository Management | lindsede@mail.uc.edu |
+| Chase Keller | Fact Checker, Presentation | kellec8@mail.uc.edu |
+| Long Nguyen | Query Analysis, Data Collection | nguye2l6@mail.uc.edu |
 
 
 
-## Bibliographies and Related Works
+## Sources and Related Works
 <div align='justify'>
  
 1. **Improving Unnesting of Complex Queries**  
