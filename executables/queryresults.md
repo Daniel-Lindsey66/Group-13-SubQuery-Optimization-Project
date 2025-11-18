@@ -35,3 +35,21 @@ Query 4 return crime records which are the most recent in their area
 Query 5 return crime records in areas where "UNAUTHORIZED COMPUTER ACCESS' crime hasn't occured
 
 ## Complaint Dataset
+
+### Query 1
+
+Returns the delay between create_date/issue_date along with the average delay of create_date/issue_date for complaints in the same city
+
+### Query 2
+
+return cities where the total number of complaints exceeds the number of complaints that were submitted via Internet. This will return all cities
+
+### Query 3
+
+Return each complaint record along with the creation date of the most recent complaint in the same zip code
+
+### Query 4
+return a complaint record along with the a count of complaints in the same zip code
+
+### Query 5
+Find complaints that share a caller_id with atleast 1 other complaint
