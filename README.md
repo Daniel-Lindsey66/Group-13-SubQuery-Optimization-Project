@@ -103,6 +103,8 @@ It is then possible to unnest and decorrelate these queries for improved executi
 <div align='justify'>
 This project is based on enhancing the results of Thomas Neumann's 'Improving Unnesting of Complex Queries' (2024) and it's precursor 'A Formalization of Top-Down Unnesting' (2024).
 </div>
+<br/>
+The above works provide an in-depth overview of a Top-Down Unnesting technique where queries are unnested/decorrelated starting from the outer-most query and working in. This is opposite to the traditional method of unnesting which is from the bottom up; whereas unnesting begins in the inner most sub-query and working out. This new method allows for unnesting of recursive queries which previously could not be unnestied via traditional means.
 
 ## Datasets
 <div align='justify'>
@@ -159,31 +161,26 @@ Below is a brief overview of the datasets we used during testing, their sources,
 1. **Improving Unnesting of Complex Queries**  
   > Basis Work - by: Thomas Neumann    
   >
-  > Bibliography summary here.  
   > [Article Link](https://15799.courses.cs.cmu.edu/spring2025/papers/11-unnesting/neumann-btw2025.pdf)
 
 2. **A Formalization of Top-Down Unnesting**
   > Basis Work - by: Thomas Neumann
   >
-  > Bibliography summary here.  
   > [Article Link](https://arxiv.org/pdf/2412.04294)
 
 3. **SQL Correlated Subqueries**
   > Informative Work - by: Geeks For Geeks, Mrinal Verma
   >
-  > Bibliography summary here.  
   > [Article Link](https://www.geeksforgeeks.org/sql/sql-correlated-subqueries/)
  
 4. **Nested Queries in SQL**
-  > Related Work - by: Geeks For Geeks, Kartik
+  > Informative Work - by: Geeks For Geeks, Kartik
   >
-  > Bibliography summary here.  
   > [Article Link](https://www.geeksforgeeks.org/sql/nested-queries-in-sql/)
 
 5. **SQL Subqueries and Correlated Queries: Mastering Nested Queries for Expert Developers**
   > Informative Work - by: Software Patterns Lexicon, Faud Efendi
   >
-  > Bibliography summary here.  
   > [Article Link](https://softwarepatternslexicon.com/patterns-sql/3/7/)
 
 6. **RW1 Holder**
