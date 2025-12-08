@@ -184,9 +184,8 @@ Below is a brief overview of the datasets we used during testing, their sources,
   > [Article Link](https://softwarepatternslexicon.com/patterns-sql/3/7/)
 
 6. **RW1 Holder**
-  > Related Work - by:
+  > Related Work - by: Dmitrii Radivonchik, Yakob Kuzin, Aanton Chizhov, Dmitriy Scheka, Mikail Firsov, Kirill Smirnov, and George Chernishev
   >
-  > Bibliography summary here.\
-  > [Article Link]()
+  > [Article Link](https://arxiv.org/pdf/2510.05907)
 
 </div>
