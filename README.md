@@ -136,14 +136,6 @@ Below is a brief overview of the datasets we used during testing, their sources,
 > [Source](https://catalog.data.gov/dataset/u-s-hourly-precipitation-data2)  
 </div>
 
-## Results
-<div align='justify'>
- 
-**General summary of results go here along with graphs and list of edge cases**
-**Link to more in-depth results page**
-
-</div>
-
 
 ## Group Contact Information
 
